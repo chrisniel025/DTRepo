@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My CV Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #222222;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #111111;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    header h3 {
+      margin-top: 5px;
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: #cccccc;
+    }
+
+    .container {
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .profile-photo {
+      position: absolute;
+      top: -80px;
+      right: 20px;
+      width: 150px;
+      height: 150px;
+      padding: 5px;
+      background: #ffffff;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    section {
+      margin-bottom: 50px;
+    }
+
+    section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: #111111;
+      border-bottom: 1px solid #dddddd;
+      padding-bottom: 5px;
+    }
+
+    .about {
+      margin-top: 60px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 0;
+      list-style-type: disc;
+      color: #333333;
+    }
+
+    ul li {
+      margin-bottom: 4px;
+    }
+
+    .project {
+      background-color: #ffffff;
+      padding: 20px;
+      margin-bottom: 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .project h3 {
+      margin: 0 0 5px 0;
+      font-size: 1.1rem;
+      color: #222222;
+    }
+
+    .project-date {
+      font-size: 0.85rem;
+      color: #777777;
+      margin-bottom: 10px;
+    }
+
+    .work-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .work-item {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border: 1px solid #e0e0e0;
+    }
+
+    .work-item h3 {
+      margin: 0 0 5px 0;
+      font-size: 1.1rem;
+      color: #222222;
+    }
+
+    .work-company {
+      font-size: 0.95rem;
+      color: #555555;
+      margin-bottom: 6px;
+    }
+
+    .work-date {
+      font-size: 0.85rem;
+      color: #777777;
+      margin-bottom: 10px;
+    }
+
+    .education-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .education-card {
+      background: #ffffff;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 20px;
+      flex: 1 1 280px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .education-card h3 {
+      margin: 0 0 5px 0;
+      font-size: 1.1rem;
+      color: #222222;
+    }
+
+    .education-school {
+      font-size: 0.95rem;
+      color: #555555;
+      margin-bottom: 6px;
+    }
+
+    .education-date {
+      font-size: 0.85em;
+      color: #777777;
+      margin-bottom: 10px;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .contact-icon {
+      width: 24px;
+      text-align: center;
+      margin-right: 8px;
+    }
+
+    .contact-link {
+      color: #111111;
+      text-decoration: none;
+    }
+
+    .contact-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: #111111;
+      color: #ffffff;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        margin-bottom: 20px;
+      }
+
+      .profile-photo {
+        position: static;
+        display: block;
+        margin: 0 auto 20px auto;
+      }
+
+      .container {
+        padding-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Christian Daniel D. Henry</h1>
+    <h3>Computer Programmer</h3>
+  </header>
+
+  <div class="container">
+    <div class="profile-photo">
+      <img src="https://www.dropbox.com/scl/fi/hs44o80sz5b8qot8s31z8/CDH.jpg?rlkey=wj4l8yn0p600uoegckflvxa1t&st=7z644gny&raw=1" alt="CDH" />
+    </div>
+
+    <section class="about">
+      <h2>About Me</h2>
+      <p>I am deeply passionate about developing applications that make a meaningful impact, highly motivated to learn new programming languages and enthusiastic about exploring diverse areas within the field of Information Technology.</p>
+    </section>
+
+    <section>
+      <h2>Project</h2>
+      <div class="project">
+        <h3>Barangay Management System</h3>
+        <div class="project-date">Jan 2020 - Present</div>
+          <ul>
+            <li>Developed and implemented a system as a contribution to Barangay Sto. Tomas in Subic, Zambales, using J2SE, MySQL and JasperReports to streamline the issuance of certificates, clearances and Barangay IDs with integrated QR code technology.</li>
+            <li>Continuously support system updates and enhancements to ensure optimal performance and user satisfaction.</li>
+          </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Work Experience</h2>
+      <div class="work-timeline">
+        <div class="work-item">
+          <h3>Technical Consultant</h3>
+          <div class="work-company">Redmap</div>
+          <div class="work-date">May 2024 - Oct 2024</div>
+          <ul>
+            <li>Set up, configured and troubleshot document workflow solutions using Confluence, MS SQL, AlayaCare, Postman and Swagger.</li>
+            <li>Provided technical support, resolved client issues via Jira, and participated in Scrum and client meetings on Microsoft Teams.</li>
+            <li>Gained exposure to ERP integrations, including Pronto Xi, MYOB, Microsoft Dynamics D365 and Xero.</li>
+          </ul>
+        </div>
+
+        <div class="work-item">
+          <h3>Computer Programmer</h3>
+          <div class="work-company">Sanyo Denki Philippines, Inc.</div>
+          <div class="work-date">Apr 2021 - Jan 2024</div>
+          <ul>
+            <li>Built and enhanced systems using VB.NET, MS SQL, RDLC and MS Excel, provided technical support and conducted user training.</li>
+            <li>Managed network and email account configurations (MS Outlook) and performed hardware and software troubleshooting tasks.</li>
+            <li>Designed graphic materials for HR activities, including presentations and tarpaulins, using Photoshop and PowerPoint.</li>
+          </ul>
+        </div>
+
+        <div class="work-item">
+          <h3>Barangay Record Keeper</h3>
+          <div class="work-company">LGU - Barangay Sto. Tomas</div>
+          <div class="work-date">Dec 2014 - Feb 2021</div>
+          <ul>
+            <li>Prepared, reviewed and balanced monthly, quarterly and annual financial reports, ensuring data accuracy and compliance.</li>
+            <li>Assisted the Barangay Treasurer, Barangay Secretary and fellow staff members in administrative and financial tasks.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="education-container">
+        <div class="education-card">
+          <h3>Bachelor of Science in Computer Science</h3>
+          <div class="education-school">Gordon College</div>
+          <div class="education-date">2015 - 2019</div>
+          <p>Graduated magna cum laude</p>
+        </div>
+
+        <div class="education-card">
+          <h3>Computer Programming</h3>
+          <div class="education-school">Kolehiyo Ng Subic</div>
+          <div class="education-date">2011 - 2013</div>
+          <p>Graduated with Highest Honors</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Contact Information</h2>
+      <ul class="contact-list">
+        <li>
+          <span class="contact-icon">&#x1F4F1;</span>
+          <a class="contact-link" href="tel:+639*********">+63 9** *** ****</a>
+        </li>
+        <li>
+          <span class="contact-icon">&#x1F4E7;</span>
+          <a class="contact-link" href="mailto:ch*******@gmail.com">ch*******@gmail.com</a>
+        </li>
+        <li>
+          <span class="contact-icon">&#x1F517;</span>
+          <a class="contact-link" href="https://www.linkedin.com/in/christian-daniel-henry/" target="_blank" rel="noopener noreferrer">
+            https://www.linkedin.com/in/christian-daniel-henry/
+          </a>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Created by Christian Daniel D. Henry</p>
+  </footer>
+</body>
+</html>
