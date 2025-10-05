@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Guessing Game by CDH</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+
+    .card {
+      background-color: #343a40;
+      color: #ffffff;
+    }
+
+    .btn-custom {
+      background-color: #000;
+      color: #ffffff;
+    }
+
+    .btn-custom:hover {
+      background-color: #333333;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body class="container py-5">
+  <h1 class="text-center mb-3">Hands-on Activity</h1>
+  <h2 class="text-center mb-5">Number Guessing Game</h2>
+
+  <div class="row justify-content-center mb-3">
+    <div class="col-md-4">
+      <input type="number" id="inputValue" class="form-control mb-2" placeholder="What's your guess?">
+      <button class="btn btn-custom w-100" onclick="checkGuess()">
+        Guess
+      </button>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card p-3">
+        <h5>Result</h5>
+        <p id="result" class="mb-0">Guess a number to begin.</p>
+      </div>
+    </div>
+  </div>
+  <script src="js/guess.js"></script>
+</body>
+</html>

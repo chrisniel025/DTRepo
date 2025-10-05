@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celsius to Fahrenheit Converter by CDH</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celsius to Fahrenheit Converter by CDH</title>
 </head>
 <body>
-    <h1>Hands-on Activity</h1>
-    <h2>Celsius to Fahrenheit Converter</h2>
+  <h1>Hands-on Activity</h1>
+  <h2>Celsius to Fahrenheit Converter</h2>
 
-    <input type="number" placeholder="Enter Celsius" id="celsius"/>
-    <button onclick="convert()">Convert</button>
+  <input type="number" placeholder="Enter Celsius" id="celsius">
+  <button onclick="convert()">Convert</button>
 
-    <script>
-        function convert() {
-            let celsius = document.getElementById("celsius").value;
-            let fahrenheit = (celsius * 9 / 5) + 32;
+  <script>
+    function convert() {
+      let celsius = document.getElementById("celsius").value;
+      let fahrenheit = (celsius * 9 / 5) + 32;
 
-            console.log("Result: " + celsius + "°C = " + fahrenheit + "°F");
-        }
-    </script>
+      console.log("Result: " + celsius + "°C = " + fahrenheit + "°F");
+    }
+  </script>
 </body>
 </html>

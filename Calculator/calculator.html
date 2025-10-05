@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade Calculator by CDH</title>
+</head>
+<body>
+  <script>
+    const projectWeight = 0.25;
+    const quizWeight = 0.15;
+    const midtermWeight = 0.25;
+    const finalsWeight = 0.25;
+    const activitiesWeight = 0.1;
+
+    function calculateGrade(
+      projectScore,
+      quizScore,
+      midtermScore,
+      finalsScore,
+      activitiesScore
+    ) {
+      const average =
+        projectScore * projectWeight +
+        quizScore * quizWeight +
+        midtermScore * midtermWeight +
+        finalsScore * finalsWeight +
+        activitiesScore * activitiesWeight;
+
+      return average;
+    }
+
+    let computedAverage = calculateGrade(100, 100, 100, 100, 100); // Passed
+    // let computedAverage = calculateGrade(74, 74, 74, 74, 74); // Failed
+
+    console.log("Average: " + computedAverage + "%");
+
+    if (computedAverage <= 74) {
+      console.log("Remarks: Failed");
+    } else {
+      // 75 and up
+      console.log("Remarks: Passed");
+    }
+  </script>
+</body>
+</html>
