@@ -1,3 +1,4 @@
+```
 DTRepo/
 │
 ├── Activity #1/
@@ -26,3 +27,4 @@ DTRepo/
     │
     └── js/
         └── student-records.js
+```
