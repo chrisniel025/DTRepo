@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destructuring by CDH</title>
+</head>
+<body>
+  <script>
+    const user = { name: "Tian", age: 30 };
+    const { name, age } = user;
+    console.log(name, age);
+
+    const frontend = ["React", "Vue"];
+    const backend = ["Node", "Express"];
+    const merged = [...frontend, ...backend];
+    console.log(merged);
+
+    function average(...numbers) {
+        const total = numbers.reduce((a, b) => a + b, 0);
+        return total / numbers.length;
+    }
+
+    console.log(average(10, 20, 30));
+  </script>
+</body>
+</html>

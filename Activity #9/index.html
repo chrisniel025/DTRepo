@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Page by CDH</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+
+    .fs-17 {
+      font-size: 17px;
+    }
+
+    .hidden-color-input {
+      visibility: hidden;
+      height: 0;
+      width: 0;
+      position: absolute;
+      overflow: hidden;
+    }
+
+    .btn-custom {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    .btn-custom:hover {
+      background-color: #333333;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body id="backgroundColor" class="container py-5">
+  <h2 class="pb-2 border-bottom">Hands-on Activity: DOM Page</h2>
+  <div class="row justify-content-center g-5 pt-4">
+    <div class="col-sm-4">
+      <h4 class="mb-3">Edit Card</h4>
+
+      <div class="mb-3">
+        <label for="file" class="form-label">Image</label>
+        <input class="form-control" type="file" id="file" accept="image/*">
+      </div>
+      
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input class="form-control" type="text" id="title">
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" rows="3"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="fontColor" class="form-label">Font Color</label>
+        <input type="color" class="form-control form-control-color" id="fontColor" value="#000000" title="Font Color">
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-5">
+            <img src="https://www.dropbox.com/scl/fi/xq2f5x9d8b5bt0ckamcs8/photo1.jpg?rlkey=dgu9tch2o9x3vi2v0gflyqqa2&st=au5fkdnb&raw=1" class="img-fluid h-100 w-100 object-fit-cover rounded-start" alt="Card Image" id="image">
+          </div>
+          <div class="col-md-7 p-3" id="div">
+            <div class="card-body">
+              <h4 class="card-title">Hello!</h4>
+              <p class="card-text fs-17">My name is Christian Daniel D. Henry. My passion is to code, code, and code. Just kidding, but honestly, I really enjoy programming. 
+                I love diving into problems, figuring things out, and creating something that actually works. It's exciting and keeps me learning all the time. 
+                Aside from coding, I also enjoy singing. Whenever I get the chance to go to a videoke place, I always make sure to grab the mic and have a good time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center justify-content-sm-end pt-4">
+    <button id="backgroundColorButton" class="btn btn-custom">Page Background Color</button>
+    <input type="color" id="backgroundColorInput" class="hidden-color-input">
+  </div>
+  <script src="js/dom-changer.js"></script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientific Calculator by CDH</title>
+  <!-- Tailwind CSS + Internal CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    body {
+      @apply bg-[#f8f9fa];
+    }
+
+    .btn {
+      @apply p-2 rounded-xl border cursor-pointer transition-all duration-200 ease-in-out select-none font-medium;
+      border-width: 1px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .btn-number {
+      @apply bg-gray-50 text-gray-800 border-gray-200 hover:bg-gray-100 active:bg-gray-200;
+    }
+
+    .btn-function {
+      @apply bg-gray-100 text-gray-900 border-gray-200 hover:bg-gray-200 active:bg-gray-300;
+    }
+
+    .btn-trig {
+      @apply bg-gray-300 text-gray-900 hover:bg-gray-400 hover:text-white active:bg-gray-500 active:text-white;
+      border-color: #b8c0cc;
+    }
+
+    .btn-secondary {
+      @apply bg-white text-gray-700 border-gray-200 hover:bg-gray-50 active:bg-gray-100;
+    }
+
+    .btn-operator {
+      @apply bg-gray-200 text-gray-800 border-gray-300 hover:bg-gray-300 active:bg-gray-400 active:text-white;
+    }
+
+    .btn-equals {
+      @apply bg-gray-400 text-white border-gray-400 hover:bg-gray-500 active:bg-gray-600;
+    }
+
+    .btn:focus-visible {
+      @apply outline-none ring-2 ring-offset-2 ring-gray-400;
+    }
+
+    .btn:hover {
+      @apply shadow-sm;
+    }
+
+    .shift-active {
+      @apply bg-gray-200 text-black border-gray-400 shadow-inner;
+    }
+
+    .shift-active:hover,
+    .shift-active:active {
+      @apply bg-gray-300 text-black border-gray-500 shadow-inner;
+    }
+
+    .toggled {
+      @apply bg-gray-100 text-black border-gray-300;
+    }
+
+    .toggled:hover,
+    .toggled:active {
+      @apply bg-gray-100 text-black border-gray-300 shadow-none;
+    }
+
+    #displayValue[readonly] {
+      caret-color: transparent;
+      user-select: none;
+    }
+
+    #tooltip {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform: translateY(-4px);
+    }
+
+    #tooltip-arrow {
+      position: absolute;
+      left: 50%;
+      bottom: -4px;
+      width: 0; 
+      height: 0; 
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid #1f2937;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <header class="mb-5">
+          <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">Hands-on Activity: <strong class="text-indigo-600">Scientific Calculator</strong></h2>
+
+          <p class="mt-4 text-gray-500">
+            The output showcases a scientific calculator built with HTML, Tailwind CSS, and JavaScript. It features a counter function implemented with closures but cannot handle complex operations and may display errors.
+          </p>
+          <p class="mt-4 text-gray-500">
+            <strong>Note:</strong> Most of the buttons, including their arrangement and labels, as well as some formulas, are inspired by the Windows Scientific Calculator for activity purposes only.
+          </p>
+        </header>
+
+        <div id="counterValue" class="text-base sm:text-xl text-gray-900 font-medium py-2 md:pb-0 text-center md:text-start">Total Calculations: 0</div>
+      </div>
+
+      <div>
+        <section class="max-w-md mx-auto">
+          <div class="rounded-xl border-2 border-gray-100 bg-white">
+            <div class="gap-4 p-3 sm:p-5 lg:p-7">
+              <input type="text" id="displayValue" class="p-3 mb-6 w-full rounded-xl border-gray-300 focus:outline-none shadow-sm text-2xl text-end" autofocus readonly autocomplete="off">
+
+              <div class="grid grid-cols-5 gap-2 mb-2">
+                <button class="btn btn-secondary text-sm tooltip-btn">DEG</button> <!-- not available -->
+                <button class="btn btn-secondary text-sm tooltip-btn">RAD</button> <!-- not available -->
+                <button class="btn btn-secondary text-sm tooltip-btn">GRAD</button> <!-- not available -->
+                <button class="btn btn-secondary text-sm tooltip-btn">Fixed</button> <!-- not available -->
+                <button class="btn btn-secondary text-sm tooltip-btn">Sci</button> <!-- not available -->
+              </div>
+
+              <div class="grid grid-cols-6 gap-2 mb-2">
+                <button class="btn btn-secondary text-sm tooltip-btn">MC</button> <!-- not available -->
+                <button class="btn btn-secondary text-sm tooltip-btn">MR</button> <!-- not available -->
+                <button class="btn btn-secondary text-sm tooltip-btn">M+</button> <!-- not available -->
+                <button class="btn btn-secondary text-sm tooltip-btn">M-</button> <!-- not available -->
+                <button class="btn btn-secondary text-sm tooltip-btn">MS</button> <!-- not available -->
+                <button class="btn btn-secondary text-sm tooltip-btn">M▾</button> <!-- not available -->
+              </div>
+
+              <div class="grid grid-cols-5 gap-2 mb-2">
+                <div class="col-span-1">
+                  <button class="btn btn-secondary w-full" id="shift1">↑</button>
+                </div>
+
+                <div class="col-span-2">
+                  <div class="relative w-full">
+                    <button id="dropdownToggle1" class="flex items-center justify-center gap-2 btn btn-secondary w-full">
+                      Trigonometry
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke-width="1.5" stroke="currentColor" class="size-2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </button>
+
+                    <div id="dropdownMenu1" class="absolute left-0 top-full mt-2 w-80 bg-white border border-gray-200 rounded-md shadow-lg hidden z-50">
+                      <div class="grid grid-cols-4 gap-2 p-2">
+                        <button class="btn btn-secondary" id="shift2">↑</button>
+                        <button class="btn btn-trig" id="btnSin" onclick="calculator.useTrig(this.textContent)">sin</button>
+                        <button class="btn btn-trig" id="btnCos" onclick="calculator.useTrig(this.textContent)">cos</button>
+                        <button class="btn btn-trig" id="btnTan" onclick="calculator.useTrig(this.textContent)">tan</button>
+                        <button class="btn btn-secondary" id="hyp">hyp</button>
+                        <button class="btn btn-trig" id="btnSec" onclick="calculator.useTrig(this.textContent)">sec</button>
+                        <button class="btn btn-trig" id="btnCsc" onclick="calculator.useTrig(this.textContent)">csc</button>
+                        <button class="btn btn-trig" id="btnCot" onclick="calculator.useTrig(this.textContent)">cot</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-span-2">
+                  <div class="relative w-full">
+                    <button id="dropdownToggle2" class="flex items-center justify-center gap-2 btn btn-secondary w-full">
+                      Function
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke-width="1.5" stroke="currentColor" class="size-2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </button>
+
+                    <div id="dropdownMenu2" class="absolute left-0 top-full mt-2 w-60 bg-white border border-gray-200 rounded-md shadow-lg hidden z-50">
+                      <div class="grid grid-cols-3 gap-2 p-2">
+                        <button class="btn btn-function" onclick="calculator.addFunction('|x|')">|x|</button>
+                        <button class="btn btn-function" onclick="calculator.addFunction('⌊x⌋')">⌊x⌋</button>
+                        <button class="btn btn-function" onclick="calculator.addFunction('⌈x⌉')">⌈x⌉</button>
+                        <button class="btn btn-secondary" onclick="calculator.addFunction('rand')">rand</button>
+                        <button class="btn btn-secondary" onclick="calculator.addFunction('→dms')">→dms</button>
+                        <button class="btn btn-secondary" onclick="calculator.addFunction('→deg')">→deg</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-5 gap-2 mb-2">
+                <button class="btn btn-function" id="btnPowerShift" onclick="calculator.usePowerShift()">x²</button>
+                <button class="btn btn-function" onclick="calculator.showConstantValue('π')">π</button>
+                <button class="btn btn-function" onclick="calculator.showConstantValue('e')">e</button>
+                <button class="btn btn-secondary" onclick="calculator.clearInput()">C</button>
+                <button class="btn btn-secondary" onclick="calculator.deleteLastCharacter()">⌫</button>
+              </div>
+
+              <div class="grid grid-cols-5 gap-2 mb-2">
+                <button class="btn btn-function" id="btnRootComparison" onclick="calculator.useRootComparison()">²√x</button>
+                <button class="btn btn-function" onclick="calculator.addFunction('1/x')">1/x</button>
+                <button class="btn btn-function" onclick="calculator.addFunction('rnd')">rnd</button>
+                <button class="btn btn-function" onclick="calculator.addToExpression('e')">exp</button>
+                <button class="btn btn-function tooltip-btn">%</button> <!-- % - not available -->
+              </div>
+
+              <div class="grid grid-cols-5 gap-2 mb-2">
+                <button class="btn btn-function tooltip-btn" id="btnPowerRootInverse">xʸ</button> <!-- xʸ, ʸ√x - not available -->
+                <button class="btn btn-function" onclick="calculator.addToExpression('(')">(</button>
+                <button class="btn btn-function" onclick="calculator.addToExpression(')')">)</button>
+                <button class="btn btn-function tooltip-btn">n!</button> <!-- n! - not available -->
+                <button class="btn btn-operator" onclick="calculator.addToExpression('÷')">÷</button>
+              </div>
+
+              <div class="grid grid-cols-5 gap-2 mb-2">
+                <button class="btn btn-function" id="btnBaseConversion" onclick="calculator.useBaseConversion()">10ˣ</button>
+                <button class="btn btn-number" onclick="calculator.addToExpression('7')">7</button>
+                <button class="btn btn-number" onclick="calculator.addToExpression('8')">8</button>
+                <button class="btn btn-number" onclick="calculator.addToExpression('9')">9</button>
+                <button class="btn btn-operator" onclick="calculator.addToExpression('×')">×</button>
+              </div>
+
+              <div class="grid grid-cols-5 gap-2 mb-2">
+                <button class="btn btn-function tooltip-btn" id="btnLogBaseChange" onclick="calculator.useLogBaseChange()">log</button> <!-- logʸx - not available -->
+                <button class="btn btn-number" onclick="calculator.addToExpression('4')">4</button>
+                <button class="btn btn-number" onclick="calculator.addToExpression('5')">5</button>
+                <button class="btn btn-number" onclick="calculator.addToExpression('6')">6</button>
+                <button class="btn btn-operator" onclick="calculator.addToExpression('-')">-</button>
+              </div>
+
+              <div class="grid grid-cols-5 gap-2 mb-2">
+                <button class="btn btn-function" id="btnNaturalLogToExp" onclick="calculator.useNaturalLogToExp()">ln</button>
+                <button class="btn btn-number" onclick="calculator.addToExpression('1')">1</button>
+                <button class="btn btn-number" onclick="calculator.addToExpression('2')">2</button>
+                <button class="btn btn-number" onclick="calculator.addToExpression('3')">3</button>
+                <button class="btn btn-operator" onclick="calculator.addToExpression('+')">+</button>
+              </div>
+
+              <div class="grid grid-cols-5 gap-2">
+                <button class="btn btn-function" onclick="calculator.toggleSign()">±</button>
+                <button class="btn btn-number" onclick="calculator.addToExpression('00')">00</button>
+                <button class="btn btn-number" onclick="calculator.addToExpression('0')">0</button>
+                <button class="btn btn-number" onclick="calculator.addToExpression('.')">.</button>
+                <button class="btn btn-equals" onclick="calculator.calculateInput()">=</button>
+              </div>
+            </div>
+
+            <div class="flex justify-end">
+              <strong class="-me-[2px] -mb-[2px] inline-flex items-center gap-1 rounded-ss-xl rounded-ee-xl bg-indigo-600 px-3 py-1.5 text-white">
+                <!-- https://heroicons.com/ -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0 0 12 2.25Z" />
+                </svg>
+                <span class="text-[10px] font-medium sm:text-xs">Created by CDH</span>
+              </strong>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div id="tooltip" class="fixed opacity-0 px-3 py-1 text-sm text-white bg-gray-800 rounded pointer-events-none">
+    Not available
+    <div id="tooltip-arrow"></div>
+  </div>
+  <script src="js/computation-engine.js"></script>
+</body>
+</html>
