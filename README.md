@@ -46,9 +46,18 @@ DTRepo/
 │   └── js/
 │       └── dom-changer.js
 │
-└── Activity #10/
-    ├── index.html
-    │
-    └── js/
-        └── character-counter.js
+├── Activity #10/
+│   ├── index.html
+│   │
+│   └── js/
+│       └── character-counter.js
+│
+├── Activity #11/
+│   ├── index.html
+│   │
+│   └── js/
+│       └── task-list.js
+│
+└── Activity #12/
+    └── index.html
 ```
