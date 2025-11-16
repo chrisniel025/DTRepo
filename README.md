@@ -58,6 +58,21 @@ DTRepo/
 │   └── js/
 │       └── task-list.js
 │
-└── Activity #12/
-    └── index.html
+├── Activity #12/
+│   └── index.html
+│
+├── Activity #13/
+│   ├── index.html
+│   │
+│   └── js/
+│       └── product-list.js
+│
+└── Activity #14/
+    ├── index.html
+    │
+    ├── api/
+    │   └── trivia.php
+    │
+    └── js/
+        └── trivia-generator.js
 ```

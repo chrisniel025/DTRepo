@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Trivia Generator by CDH</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+
+    .card {
+      background-color: #343a40;
+      color: #ffffff;
+    }
+
+    .btn-custom {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    .btn-custom:hover {
+      background-color: #333333;
+      color: #ffffff;
+    }
+
+    #question {
+      text-align: center;
+    }
+
+    #btn {
+      display: none;
+      width: 80%;
+      margin: 0.75rem auto;
+      cursor: pointer;
+      background-color: transparent;
+      color: #ffffff;
+      border: 2px solid #ffffff;
+    }
+
+    #btn:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    #answer {
+      display: none;
+      text-align: center;
+      background-color: #495057;
+      color: #ffffff;
+      padding: 10px 12px;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body class="container py-5">
+  <h1 class="text-center mb-3">Hands-on Activity</h1>
+  <h2 class="text-center">Random Trivia Generator</h2>
+  <p class="text-center mb-5">
+    Data sourced from <a href="https://www.wikihow.com/Pokemon-Trivia" target="_blank">https://www.wikihow.com/Pokemon-Trivia</a>, for activity purposes only.
+  </p>
+
+  <div class="row justify-content-center mb-3">
+    <div class="col-md-4 d-flex justify-content-end">
+      <button class="btn btn-custom w-100" onclick="newQuestion()">
+        New Question
+      </button>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card p-3">
+        <h5 id="question">Click "New Question" to start!</h5>
+        <button class="btn" onclick="showAnswer()" id="btn">
+          Show Answer
+        </button>
+        <p id="answer"></p>
+      </div>
+    </div>
+  </div>
+  <script src="js/trivia-generator.js"></script>
+</body>
+</html>

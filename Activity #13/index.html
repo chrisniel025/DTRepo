@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product List Table by CDH</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+  </style>
+</head>
+<body class="container py-5">
+  <h2 class="pb-2 border-bottom">Hands-on Activity: Product List Table</h2>
+  <div class="justify-content-center pt-4">
+    <div class="d-flex justify-content-between align-items-center flex-nowrap mb-3">
+      <div class="d-flex align-items-center flex-nowrap">
+        <label for="filterBy" class="me-3 mb-0">Filter by category</label>
+        <select id="filterBy" class="form-select form-select-sm w-auto">
+          <option value="All">All</option>
+          <option value="Computers">Computers</option>
+          <option value="Peripherals">Peripherals</option>
+          <option value="Printers and scanners">Printers and scanners</option>
+          <option value="Servers">Servers</option>
+          <option value="Routers">Routers</option>
+          <option value="Mobile devices">Mobile devices</option>
+          <option value="Security cameras">Security cameras</option>
+          <option value="Other devices">Other devices</option>
+        </select>
+      </div>
+
+      <div class="d-flex align-items-center flex-nowrap">
+        <label for="sortBy" class="me-3 mb-0">Sort by</label>
+        <select id="sortBy" class="form-select form-select-sm w-auto">
+          <option value="id">ID</option>
+          <option value="name">Name</option>
+          <option value="quantity">Quantity</option>
+          <option value="price">Price</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table" id="dataTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="js/product-list.js"></script>
+</body>
+</html>
