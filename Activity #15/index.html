@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Persistent To-Do List with Storage by CDH</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+  <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <header class="mb-5">
+          <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">Hands-on Activity: <strong class="text-indigo-600">Persistent To-Do List with Storage</strong></h2>
+
+          <p class="mt-4 text-gray-500">
+            The output showcases a simple to-do list where you can add and delete tasks, toggle them as complete or in-progress, clear all tasks, and have them persist even after closing the page.
+          </p>
+        </header>
+      </div>
+
+      <div>
+        <div class="max-w-md mx-auto">
+          <div class="rounded-xl border-2 border-gray-100 bg-white">
+            <div class="gap-4 p-3 sm:p-5 lg:p-7 max-w-md mx-auto">
+              <div class="flex mb-4">
+                <input id="addTask" type="text" placeholder="Add task" class="flex-1 px-3 py-2 border rounded-l-lg focus:outline-none border-gray-200">
+                <button id="addButton" class="px-4 rounded-r-lg border cursor-pointer transition-all duration-200 ease-in-out select-none bg-gray-400 text-white border-gray-400 hover:bg-gray-500 active:bg-gray-600 flex items-center justify-center" style="border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                  <!-- https://heroicons.com/ -->
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                  </svg>
+                </button>
+              </div>
+
+              <ul id="taskList" class="space-y-2"></ul>
+
+              <button id="clearButton" class="w-full mt-4 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors cursor-pointer">
+                Clear All Tasks
+              </button>
+            </div>
+
+            <div class="flex justify-end">
+              <strong class="-me-[2px] -mb-[2px] inline-flex items-center gap-1 rounded-ss-xl rounded-ee-xl bg-indigo-600 px-3 py-1.5 text-white">
+                <!-- https://heroicons.com/ -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                </svg>
+                <span class="text-[10px] font-medium sm:text-xs">Created by CDH</span>
+              </strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/task-list.js"></script>
+</body>
+</html>

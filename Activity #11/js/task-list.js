@@ -20,11 +20,11 @@ addButton.addEventListener("click", () => {
   });
 
   const taskAlign = document.createElement("div");
-  taskAlign.className = "d-flex justify-content-between align-items-center";
+  taskAlign.className = "d-flex justify-content-between align-items-center w-100";
 
   const taskText = document.createElement("div");
-  taskText.className = "d-flex align-items-center";
-  taskText.innerHTML = `<i class="bi bi-circle me-3 ms-2"></i><div>${taskContent}</div>`;
+  taskText.className = "d-flex align-items-center text-break me-auto mw-100";
+  taskText.innerHTML = `<i class="bi bi-circle me-3 ms-2"></i><div class="word-wrap">${taskContent}</div>`;
 
   const deleteButton = document.createElement("button");
   deleteButton.type = "button";
